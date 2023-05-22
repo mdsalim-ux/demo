@@ -1,0 +1,17 @@
+<div class="alertbox">
+    <div class="row titleheader" *ngIf="title">
+      <div class="col-sm-12 borderButtom" >
+        <h2 mat-dialog-title style="color: white"  class="md-title-h4 dialogHeader titleheader ">{{title}}</h2>
+      </div>
+    </div>
+    <div mat-dialog-content>
+      <div  class="row  messageSize pt-2 " *ngFor="let msg of message">
+           <div class="col-sm-12">{{msg}}</div>
+      </div>
+    </div>
+      <div mat-dialog-actions align="end">
+        <button mat-raised-button color="accent" cdkFocusInitial (click)="ConfirmNo()" >{{'No'|translate}}</button>
+        <button mat-raised-button color="primary" cdkFocusInitial (click)="ConfirmYes()" >{{'Yes'|translate}}</button>
+      </div>
+  </div>
+  

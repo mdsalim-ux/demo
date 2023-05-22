@@ -1,0 +1,35 @@
+<div class="container">
+
+    <mat-dialog-content class="mat-typography">
+    
+      <form class="example-form" (ngSubmit)="emailFormControl" [formGroup]="emailFormControl">
+        <mat-form-field class="example-full-width">
+          <mat-label>Email</mat-label>
+          <input type="email" matInput formControlName="email"
+                 placeholder="Ex. pat@example.com">
+          
+          <mat-error *ngIf="emailFormControl.controls['email']['errors']?.['required']">
+            Please enter a valid email address
+          </mat-error>
+    
+        </mat-form-field>
+        <mat-form-field class="example-full-width">
+          <mat-label>{{msg}}</mat-label>
+          <input type="password" matInput formControlName="password"
+                 placeholder="">
+          
+          <mat-error *ngIf="emailFormControl.controls['password']['errors']?.['required']">
+           {{'Pas'|translate}}
+          </mat-error>
+    
+        </mat-form-field>
+      </form>
+      ds
+    
+    </mat-dialog-content>
+    <mat-dialog-actions align="end">
+      <button mat-button mat-dialog-close>Cancel</button>
+      <button mat-button color="primary" (click)="onClick()"  cdkFocusInitial>Ok</button>
+    </mat-dialog-actions>
+    
+    </div>

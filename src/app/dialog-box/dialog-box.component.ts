@@ -73,22 +73,23 @@ export class DialogBoxComponent implements OnInit  {
   openDialog() {
     // let input={'title':this.translate.getTranslatelang('Info'),message:[this.translate.getTranslatelang('Inform')]}
     // this._dialog.OpenAlert(input,'450px')
-    let input = { 'title': this.translate.getTranslatelang('Info'), message: [this.translate.getTranslatelang('Inform')] }
-    this._confirm.OpenConfirmAlert(input, '450px').subscribe(result => {
-      if (result) {
-       this.notification.error(this.translate.getTranslatelang('Inform'),'')
-      }
-      else {
-        return
-      }
-    })
-    
-    // const dialogRef = this.dialog.open(SignupComponent);
-    
-    // dialogRef.afterClosed().subscribe(result => {
-    //   console.log(`Dialog result: ${result}`);
-    
-    // });
+    // let input = { 'title': this.translate.getTranslatelang('Info'), message: [this.translate.getTranslatelang('Inform')] }
+    // this._confirm.OpenConfirmAlert(input, '450px').subscribe(result => {
+    //   if (result) {
+    //    this.notification.error(this.translate.getTranslatelang('Inform'),'')
+    //   }
+    //   else {
+    //     return
+    //   }
+    // })
+    const dialogRef = this.dialog.open(SignupComponent,{
+      disableClose:true,
+      width:'450px',
+      autoFocus:false,
+    });
+    dialogRef.afterClosed().subscribe(result => {
+      console.log(`Dialog result: ${result}`);
+    });
   }
     
  

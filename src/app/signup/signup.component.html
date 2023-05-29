@@ -1,35 +1,35 @@
-<div class="container">
+<div class="container-fluid">
 
-    <mat-dialog-content class="mat-typography">
-    
-      <form class="example-form" (ngSubmit)="emailFormControl" [formGroup]="emailFormControl">
-        <mat-form-field class="example-full-width">
-          <mat-label>Email</mat-label>
-          <input type="email" matInput formControlName="email"
-                 placeholder="Ex. pat@example.com">
-          
-          <mat-error *ngIf="emailFormControl.controls['email']['errors']?.['required']">
-            Please enter a valid email address
-          </mat-error>
-    
+  <mat-dialog-content class="mat-typography">
+      <mat-icon class="cancelIcon" mat-dialog-close>close</mat-icon>
+      <b>{{'Login'|translate}}</b><br>
+      <form (ngSubmit)="emailFormControl.valid" name="emailFormControl" [formGroup]="emailFormControl" class="novalidate">
+          <div class="mb-2 mt-2">
+            <mat-form-field>
+              <input type="text"  matInput formControlName="username"
+                  placeholder="{{'Username'|translate}}" required >
+                  <mat-error *ngIf="emailFormControl.controls['username']['errors']?.['required'] && emailFormControl.controls['username'].touched">
+                      {{'User_Name_required'|translate}}
+                    </mat-error>                      
+              <mat-error
+              *ngIf="emailFormControl.controls['username']['errors']?.['pattern']  && emailFormControl.controls['username'].touched">{{'User_Name_Val'|translate}}
+            </mat-error>
         </mat-form-field>
-        <mat-form-field class="example-full-width">
-          <mat-label>{{msg}}</mat-label>
-          <input type="password" matInput formControlName="password"
-                 placeholder="">
-          
-          <mat-error *ngIf="emailFormControl.controls['password']['errors']?.['required']">
-           {{'Pas'|translate}}
-          </mat-error>
-    
-        </mat-form-field>
+
+            </div>
+          <div class="mb-2 mt-2">
+            <mat-form-field>
+                <input  type="password"   matInput formControlName="password"  placeholder="{{'Password_Val'|translate}}"required>
+                <mat-error *ngIf="emailFormControl.controls['password']['errors']?.['required'] && emailFormControl.controls['password'].touched">
+                    {{'Password_required'|translate}}
+                </mat-error>  
+                <mat-error
+                 *ngIf="emailFormControl.controls['password']['errors']?.['pattern'] && emailFormControl.controls['password'].touched">{{'Password_Confirm_Val'|translate}}</mat-error>
+            </mat-form-field>
+             
+          </div>
       </form>
-      ds
-    
-    </mat-dialog-content>
-    <mat-dialog-actions align="end">
-      <button mat-button mat-dialog-close>Cancel</button>
-      <button mat-button color="primary" (click)="onClick()"  cdkFocusInitial>Ok</button>
-    </mat-dialog-actions>
-    
-    </div>
+  </mat-dialog-content>
+  <mat-dialog-actions align="end">
+      <button   mat-raised-button (click)="onClick()" >{{'Login'|translate}}</button>
+  </mat-dialog-actions>

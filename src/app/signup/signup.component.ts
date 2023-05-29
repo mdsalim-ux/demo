@@ -19,23 +19,28 @@ constructor(private formBuilder:FormBuilder,private _notification:ToasterService
 
   ngOnInit(): void {
     this.emailFormControl=this.formBuilder.group({
-      email:['',Validators.required],
+      username:['',Validators.required],
       password:['',Validators.required]
 
     }) 
    }
 
    onClick(){
-    this.emailFormControl.valid
-    this.msg=(this._translate.getTranslatelang('Pas'))
-    this._notification.error(this._translate.getTranslatelang('Pas'),'')
-    this._notification.info(this._translate.getTranslatelang('Pas'),'')
 
-    this._notification.success(this._translate.getTranslatelang('Pas'),'')
-
-    this._notification.warning(this._translate.getTranslatelang('Pas'),'')
-
-    console.log( this.emailFormControl.valid,'Check Status')
+    if(    this.emailFormControl.valid      ){
+      this.msg=(this._translate.getTranslatelang('Pas'))
+      this._notification.error(this._translate.getTranslatelang('Pas'),'')
+      this._notification.info(this._translate.getTranslatelang('Pas'),'')
+  
+      this._notification.success(this._translate.getTranslatelang('Pas'),'')
+  
+      this._notification.warning(this._translate.getTranslatelang('Pas'),'')
+  
+      console.log( this.emailFormControl.valid,'Check Status')
+    }
+    else{
+      return
+    }
   }
 
 }

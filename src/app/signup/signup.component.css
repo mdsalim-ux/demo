@@ -1,0 +1,10 @@
+.cancelIcon:hover {
+    background-color: rgb(157, 68, 68);
+    cursor: pointer;
+  }
+  .cancelIcon {
+    position: absolute; 
+    right: 15px;
+    font-size: 25px;
+    top: 10px;
+  }

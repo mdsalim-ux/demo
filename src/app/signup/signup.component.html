@@ -1,12 +1,10 @@
-<div class="container-fluid">
 
   <mat-dialog-content class="mat-typography">
       <mat-icon class="cancelIcon" mat-dialog-close>close</mat-icon>
-      <b>{{'Login'|translate}}</b><br>
+      <b>{{'Create Account'|translate}}</b><br>
       <form (ngSubmit)="emailFormControl.valid" name="emailFormControl" [formGroup]="emailFormControl" class="novalidate">
-          <div class="mb-2 mt-2">
-            <mat-form-field>
-              <input type="text"  matInput formControlName="username"
+            <mat-form-field >
+              <input type="text"  matInput formControlName="username" 
                   placeholder="{{'Username'|translate}}" required >
                   <mat-error *ngIf="emailFormControl.controls['username']['errors']?.['required'] && emailFormControl.controls['username'].touched">
                       {{'User_Name_required'|translate}}
@@ -14,12 +12,9 @@
               <mat-error
               *ngIf="emailFormControl.controls['username']['errors']?.['pattern']  && emailFormControl.controls['username'].touched">{{'User_Name_Val'|translate}}
             </mat-error>
-        </mat-form-field>
-
-            </div>
-          <div class="mb-2 mt-2">
+        </mat-form-field>         
             <mat-form-field>
-                <input  type="password"   matInput formControlName="password"  placeholder="{{'Password_Val'|translate}}"required>
+                <input  type="password"   matInput formControlName="password"  placeholder="{{'Password_required'|translate}}"required>
                 <mat-error *ngIf="emailFormControl.controls['password']['errors']?.['required'] && emailFormControl.controls['password'].touched">
                     {{'Password_required'|translate}}
                 </mat-error>  
@@ -27,9 +22,8 @@
                  *ngIf="emailFormControl.controls['password']['errors']?.['pattern'] && emailFormControl.controls['password'].touched">{{'Password_Confirm_Val'|translate}}</mat-error>
             </mat-form-field>
              
-          </div>
       </form>
   </mat-dialog-content>
   <mat-dialog-actions align="end">
-      <button   mat-raised-button (click)="onClick()" >{{'Login'|translate}}</button>
+      <button   mat-raised-button color="accent" (click)="onClick()" >{{'Sign-Up'|translate}}</button>
   </mat-dialog-actions>

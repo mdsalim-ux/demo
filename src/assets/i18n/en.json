@@ -10,6 +10,12 @@
     "Hello":"Hello",
     "Hells":"Hello",
     "h3":"h3",
-    "h1":"h1"
+    "h1":"h1",
+    "User_Name_required":"Please enter the User Name",
+    "User_Name_Val":"User Name does not exits",
+    "Password_required":"Please enter the Password",
+    "Password_Confirm_Val":"Password does not exits",
+    "Sign-Up Successfully":"Sign-Up Successfully",
+    "Please enter the User Name or Password":"Please enter the User Name or Password"
 
 }

@@ -1,5 +1,5 @@
 .cancelIcon:hover {
-    background-color: rgb(157, 68, 68);
+    background-color: rgb(85, 26, 26);
     cursor: pointer;
   }
   .cancelIcon {
@@ -7,4 +7,12 @@
     right: 15px;
     font-size: 25px;
     top: 10px;
+  }
+
+  .mat-mdc-form-field {
+    --mat-mdc-form-field-floating-label-scale: 0.75;
+    display: contents;
+    flex-direction: column;
+    min-width: 0;
+    text-align: left;
   }

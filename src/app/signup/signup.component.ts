@@ -24,9 +24,11 @@ constructor(private formBuilder:FormBuilder,
 
   ngOnInit(): void {
     this.emailFormControl=this.formBuilder.group({
-      username:['',Validators.required],
-      password:['',Validators.required]
+      name:['',Validators.required],
+      MobileNumber:['',Validators.required]
     }) 
+
+    this.getStudents();
    }
 
    onClick(){
@@ -34,15 +36,22 @@ constructor(private formBuilder:FormBuilder,
     if(this.emailFormControl.valid){
       this._notification.success(this._translate.getTranslatelang('Sign-Up Successfully'),'')
       this._dialogRef.close(true);
-       let url="https://localhost:1234/api/Student/GetStudents"
-       this.http.get(url).subscribe(res=>{
+      console.log(this.emailFormControl.value,'Values')
+      let url="https://localhost:1234/api/Student/SavingStudents"
+      this.http.post(url,this.emailFormControl.value).subscribe(res=>{
         console.log(res,'res')
-       });
+        this.getStudents();
+      })
       }
     else{
       this._notification.error(this._translate.getTranslatelang('Please enter the User Name or Password'),'')
       return
     }
   }
-
+   getStudents(){
+    let url="https://localhost:1234/api/Student/GetStudents"
+       this.http.get(url).subscribe(res=>{
+        console.log(res,'res')
+       });
+   }
 }

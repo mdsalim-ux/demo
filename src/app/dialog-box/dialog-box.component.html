@@ -69,20 +69,32 @@
 <button mat-raised-button (click)="showLoader()">Spinner</button>
  -->
 
-<div class="container">
- <mat-select [(value)]="_translate.currentLang" (selectionChange)="dropdownchange($event)">
-  <mat-select-trigger>
-   {{_translate.currentLang|translate}}
-  </mat-select-trigger>
-  <mat-option  *ngFor="let lang of suppLang" [value]="lang">
-  {{lang|translate}}
-</mat-option>
 
- </mat-select>
 
- 
-</div>
-<br>
+
+
+
+<p class="container">
+  <mat-toolbar color="warn">
+    <button mat-icon-button class="example-icon" aria-label="Example icon-button with menu icon">
+      <mat-icon>menu</mat-icon>
+    </button>
+    <span>My App</span>
+    <span class="example-spacer"></span>
+    <button mat-icon-button class="example-icon favorite-icon" aria-label="Example icon-button with heart icon">
+      <mat-icon>favorite</mat-icon>
+    </button>
+    <mat-select [(value)]="_translate.currentLang" (selectionChange)="dropdownchange($event)">
+      <mat-select-trigger>
+       {{_translate.currentLang|translate}}
+      </mat-select-trigger>
+      <mat-option  *ngFor="let lang of suppLang" [value]="lang">
+      {{lang|translate}}
+    </mat-option>
+    
+     </mat-select>
+  </mat-toolbar>
+</p>
 
 <div class="container">
   <button mat-raised-button color="primary" (click)="openDialog()">Open Dialog</button>

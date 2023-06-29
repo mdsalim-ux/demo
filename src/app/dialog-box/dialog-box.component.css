@@ -15,3 +15,13 @@
     text-overflow: ellipsis;
   }
   
+
+  .example-spacer {
+    flex: 1 1 auto;
+  }
+  
+  .mat-mdc-select {
+    display: inline-block;
+     width: 10%;
+    outline: none;
+  }

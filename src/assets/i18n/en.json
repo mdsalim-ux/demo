@@ -1,6 +1,6 @@
 {
     "en":"English",
-    "hn":"Hindi",
+    "hn":"हिंदी",
     "Spinner":"En",
     "Pas":" Please enter a valid Password",
     "Password":"Password",
@@ -16,6 +16,8 @@
     "Password_required":"Please enter the Password",
     "Password_Confirm_Val":"Password does not exits",
     "Sign-Up Successfully":"Sign-Up Successfully",
-    "Please enter the User Name or Password":"Please enter the User Name or Password"
+    "Please enter the User Name or Password":"Please enter the User Name or Password",
+    "Welcome":"Welcome Dashboard",
+    "My App":"My App"
 
 }

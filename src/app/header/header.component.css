@@ -1,0 +1,77 @@
+.example-form {
+    min-width: 150px;
+    max-width: 500px;
+    width: 100%;
+  }
+  
+  .example-full-width {
+    width: 100%;
+  }
+  
+  .lang-option {
+    width: 120px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+  
+
+  .example-spacer {
+    flex: 1 1 auto;
+  }
+  
+  .mat-mdc-select {
+    display: inline-block;
+     width: 10%;
+    outline: none;
+  }
+
+  .custom-dropdown {
+    width: 130px;
+    background-color: white;
+    border: 1px solid blue;
+    border-radius: 4px;
+    padding: 5px;
+    font-size: 12px;
+    color: #333;
+    margin-top: 0px;
+  }
+
+
+
+  #externalExcel{
+    text-align: center;
+}
+.outline{
+    border: 1px solid black; 
+    border-radius: sqaure;
+}
+.inputfile {
+    width: .1px;
+    height: .1px;
+    opacity: 0;
+    overflow: hidden;
+    position: absolute;
+    z-index: -1;
+}
+.btn{
+    background-color:#5236AB;
+    color: white;
+}
+.downloadWorksheet{
+    color: #3f51b5 !important;
+    text-decoration: underline !important;
+    font-size: 15px;
+
+}
+.alignment{
+   
+    color: #3f51b5;
+    font-size: 15px;
+  text-decoration: underline;
+}
+.dialogHeader{
+    color: #3f51b5;
+}
+
+

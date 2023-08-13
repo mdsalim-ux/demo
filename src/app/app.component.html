@@ -1,3 +1,11 @@
 <app-loader></app-loader>
-<router-outlet ></router-outlet>
+<div class="container">
+  <xng-breadcrumb [autoGenerate]="false">
+    <ng-container *xngBreadcrumbItem="let breadcrumb">
+      <b [routerLink]="breadcrumb.url">{{breadcrumb}}</b>
+    </ng-container>
+  </xng-breadcrumb>
 
+
+</div>
+<router-outlet></router-outlet>

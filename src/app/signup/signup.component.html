@@ -1,29 +1,36 @@
-
-  <mat-dialog-content class="mat-typography">
-      <mat-icon class="cancelIcon" mat-dialog-close>close</mat-icon>
-      <b>{{'Create Account'|translate}}</b><br>
-      <form (ngSubmit)="emailFormControl.valid" name="emailFormControl" [formGroup]="emailFormControl" class="novalidate">
-            <mat-form-field >
-              <input type="text"  matInput formControlName="name" 
-                  placeholder="{{'Username'|translate}}" required >
-                  <mat-error *ngIf="emailFormControl.controls['name']['errors']?.['required'] && emailFormControl.controls['name'].touched">
-                      {{'User_Name_required'|translate}}
-                    </mat-error>                      
-              <mat-error
-              *ngIf="emailFormControl.controls['name']['errors']?.['pattern']  && emailFormControl.controls['name'].touched">{{'User_Name_Val'|translate}}
-            </mat-error>
-        </mat-form-field>         
-            <mat-form-field>
-                <input  type="number"   matInput formControlName="MobileNumber"  placeholder="{{'Mobile Number'|translate}}"required>
-                <mat-error *ngIf="emailFormControl.controls['MobileNumber']['errors']?.['required'] && emailFormControl.controls['MobileNumber'].touched">
-                    {{'Please enter the mobile number'|translate}}
-                </mat-error>  
+<div class="container">
+    <mat-dialog-content class="mat-typography">
+        <div class="col-sm-12">
+            <b>{{'Create Account'|translate}}</b>
+        </div>
+        <form (ngSubmit)="emailFormControl.valid" name="emailFormControl" [formGroup]="emailFormControl">
+            <div class="col-sm-6">
+                <input type="text" matInput formControlName="name" class="form-control"
+                    placeholder="{{'Username'|translate}}" required>
                 <mat-error
-                 *ngIf="emailFormControl.controls['MobileNumber']['errors']?.['pattern'] && emailFormControl.controls['MobileNumber'].touched">{{'Please enter mobile number'|translate}}</mat-error>
-            </mat-form-field>
-             
+                    *ngIf="emailFormControl.controls['name']['errors']?.['required'] && emailFormControl.controls['name'].touched">
+                    {{'User_Name_required'|translate}}
+                </mat-error>
+                <mat-error
+                    *ngIf="emailFormControl.controls['name']['errors']?.['pattern']  && emailFormControl.controls['name'].touched">{{'User_Name_Val'|translate}}
+                </mat-error>
+            </div>
+            <div class="col-sm-6">
+                <input type="number" class="form-control" matInput formControlName="MobileNumber"
+                    placeholder="{{'Mobile Number'|translate}}" required>
+                <mat-error
+                    *ngIf="emailFormControl.controls['MobileNumber']['errors']?.['required'] && emailFormControl.controls['MobileNumber'].touched">
+                    {{'Please enter the mobile number'|translate}}
+                </mat-error>
+                <mat-error
+                    *ngIf="emailFormControl.controls['MobileNumber']['errors']?.['pattern'] && emailFormControl.controls['MobileNumber'].touched">{{'Please enter mobile number'|translate}} </mat-error>
+            </div>
       </form>
   </mat-dialog-content>
-  <mat-dialog-actions align="end">
-      <button   mat-raised-button color="accent" (click)="onClick()" >{{'Sign-Up'|translate}}</button>
-  </mat-dialog-actions>
+  <div class="col-sm-6">
+    <button   mat-raised-button color="warn" class="form-control" (click)="onLogin()">{{'Login'|translate}}</button>
+  </div>
+    <div class="col-sm-6">
+        <button mat-raised-button color="accent" class="form-control" (click)="onClick()">{{'SignUp'|translate}}</button>
+    </div>
+</div>

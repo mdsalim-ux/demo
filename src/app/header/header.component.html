@@ -1,0 +1,111 @@
+
+ <p class="container">
+    <mat-toolbar color="warn">
+      <button mat-icon-button class="example-icon" aria-label="Example icon-button with menu icon">
+        <mat-icon>menu</mat-icon>
+      </button>
+      <span>{{'My App'|translate}}</span>
+      <span class="example-spacer"></span>
+      <button mat-icon-button class="example-icon favorite-icon" (click)="openDialog()" aria-label="Example icon-button with heart icon">
+        <mat-icon >supervisor_account</mat-icon>
+      </button>
+      <mat-select class="lang-option custom-dropdown" [(value)]="_translate.currentLang" (selectionChange)="dropdownchange($event)">
+        <mat-select-trigger>
+         {{_translate.currentLang|translate}}
+        </mat-select-trigger>
+        <mat-option  *ngFor="let lang of suppLang" [value]="lang">
+        {{lang|translate}}
+      </mat-option>
+      
+       </mat-select>
+    </mat-toolbar>
+  </p>
+  
+
+
+
+ <!-- <div class="container">
+    <div class="row">
+        <div class="col-sm-12">
+            <h2 class="md-title-h1 dialogHeader">{{'Excel Upload'|translate}}</h2>
+        </div>
+    </div>
+    <mat-dialog-content>
+        <div class="row">
+            <div *ngIf="!fileSelected">
+                <div class="row">
+                    <div class="col-sm-11.5">
+                        <span class="float-end"><a class="downloadWorksheet"
+                                href="./../../../../assets/excel/Excel_Upload.xlsx"
+                                download>{{'Download Excel'|translate}}</a></span>
+                    </div>
+                </div>
+                <div>
+                    <input class="inputfile float-right" id="excel_upload" type="file" name="excel_upload"
+                        accept="application/vnd.openxmlformats-officedocument.spreadsheetml.sheet,application/vnd.ms-excel.sheet.macroEnabled.12"
+                        (change)="browseExcel($event)">
+                    <label class="btn" for="excel_upload">{{'Browse'|translate}}</label>
+                </div>
+                
+            </div>
+        </div>
+        <div *ngIf="fileSelected">
+            <div class="row" *ngIf="!isSubmitted">
+                <input class="inputfile float-right" id="excel_upload" type="file" name="excel_upload" onclick="this.value = null"
+                    accept="application/vnd.openxmlformats-officedocument.spreadsheetml.sheet,application/vnd.ms-excel.sheet.macroEnabled.12" (change)="browseExcel($event)">
+                <label id="replacefiles" class="downloadWorksheet" for="excel_upload">
+                    {{'Replace file'|translate}}
+                </label>
+            </div>
+    
+        </div>
+    </mat-dialog-content>
+    <br>
+    <mat-divider></mat-divider>
+    
+    
+    <mat-tab-group>
+        <mat-tab label="{{ 'Excel Details' | translate }}">
+          <p-table [value]="finalExcelData" styleClass="" [rows]="5" [paginator]="true" 
+                   [rowsPerPageOptions]="[5,10,25,50]" [autoLayout]="true" paginatorDropdownAppendTo="body">
+            <ng-template pTemplate="header">
+              <tr>
+              <th pSortableColumn="SL. No">{{ 'SL. No' }}<p-sortIcon field="SL. No"></p-sortIcon>
+              <p-columnFilter type="text" field="SL. No" display="menu"></p-columnFilter></th>
+              <th pSortableColumn="First Name">{{ 'First Name' | translate }}<p-sortIcon field="First Name"></p-sortIcon>
+              <p-columnFilter type="text" field="First Name" display="menu"></p-columnFilter></th>
+              <th pSortableColumn="Last Name">{{ 'Last Name' | translate }}<p-sortIcon field="Last Name"></p-sortIcon>
+              <p-columnFilter type="text" field="Last Name" display="menu"></p-columnFilter></th>
+              <th pSortableColumn="Email Address">{{ 'Email Address' | translate }}<p-sortIcon field="Email Address"></p-sortIcon>
+              <p-columnFilter type="text" field="Email Address" display="menu"></p-columnFilter></th>
+              </tr>
+            </ng-template>
+    
+            <ng-template pTemplate="body" let-rowData let-i="rowIndex">
+                <tr>
+                    <td *ngFor="let column of finalExcelData">{{ column.data[i] }}</td>
+                </tr>
+            </ng-template>
+          </p-table>
+        </mat-tab>
+      </mat-tab-group>
+    </div>  -->
+
+
+
+    <ag-grid-angular 
+    class="ag-theme-alpine" 
+    [columnDefs]="columnDefs"
+    [rowData]="rowData" 
+    rowSelection="multiple"
+    [gridOptions]="gridOptions"
+    [suppressMenuHide]="true"
+    (gridReady)="onGridReady($event)"
+    style="width: 100%; height: 308px;">
+</ag-grid-angular>
+<mat-dialog-actions >
+    <button mat-raised-button [disabled]="editEnable" color="accent" *ngIf="!getSelectedRow()"
+    style="cursor: not-allowed;">{{'Delete'|translate}}<mat-icon>delete</mat-icon></button>
+    <button mat-raised-button [disabled]="!editEnable" color="accent" *ngIf="getSelectedRow() "
+    (click)="deleteRow()" >{{'Delete'|translate}}<mat-icon>delete</mat-icon></button>
+</mat-dialog-actions >

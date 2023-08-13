@@ -1,6 +1,9 @@
 /* You can add global styles to this file, and also import other style files */
 @import "~bootstrap/dist/css/bootstrap.min.css";
-
+@import "primeicons/primeicons.css";
+@import 'primeng/resources/primeng.min.css';
+@import 'ag-grid-community/styles/ag-grid.css';
+@import 'ag-grid-community/styles/ag-theme-alpine.css';
 
 html, body { height: 100%; }
 body { margin: 0; 
@@ -8,7 +11,10 @@ body { margin: 0;
     margin-top: 10px;
 }
 
-
+.container{
+    max-width: 1200px;
+    margin-top: 10px;
+}
 .titleheader {
     background: #081d32;
     overflow: hidden;
@@ -22,4 +28,58 @@ body { margin: 0;
     overflow: hidden;
 }
 
+.overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: 9999;
+    background-color: transparent;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  .spinner {
+    opacity: 1;
+    border: 10px solid transparent;
+    border-top: 8px solid rgb(40, 10, 100); /* Replace with your desired color mix */
+    border-radius: 50%;
+    width: 80px;
+    height: 80px;
+    animation: spin linear infinite;
+    animation-duration: 2s;
+    --border-width: 0;
+    --border-color: transparent;
+  }
+  
+  .spinner::before {
+    content: "";
+    position: absolute;
+    top: calc(50% - 40px);
+    left: calc(50% - 40px);
+    width: 80px;
+    height: 80px;
+    border: var(--border-width) solid var(--border-color);
+    border-radius: 50%;
+  }
+  
+  @keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+  }
+  
+  .loaderMsg {
+    margin-top: 10px;
+    font-size: 12px;
+    color: #fff;
+    position: absolute;
+    top: calc(50% + 50px);
+    left: 50%;
+    transform: translateX(-50%);
+    color: #098f8f;
+    font-weight: bold;
+    text-align: center;
+  }
 /* for clone test */

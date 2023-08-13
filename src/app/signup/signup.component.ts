@@ -4,6 +4,7 @@ import { ToasterService } from '../services/toaster/toaster.service';
 import { TransationModule } from '../services/transation/transation.module';
 import { MatDialog, MatDialogRef } from '@angular/material/dialog';
 import { HttpClient } from '@angular/common/http';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-signup',
@@ -15,10 +16,10 @@ export class SignupComponent implements OnInit {
   msg: any;
 
 constructor(private formBuilder:FormBuilder,
-  private _dialogRef:MatDialogRef<any>,
   private _notification:ToasterService,
   private _translate:TransationModule,
-  private http:HttpClient){
+  private http:HttpClient,
+  private router:Router){
 }
 
 
@@ -35,10 +36,9 @@ constructor(private formBuilder:FormBuilder,
     this.emailFormControl.markAllAsTouched()
     if(this.emailFormControl.valid){
       this._notification.success(this._translate.getTranslatelang('Sign-Up Successfully'),'')
-      this._dialogRef.close(true);
       console.log(this.emailFormControl.value,'Values')
       let url="https://localhost:1234/api/Student/SavingStudents"
-      this.http.post(url,this.emailFormControl.value).subscribe(res=>{
+      this.http.post(url,this.emailFormControl.value).subscribe((res: any)=>{
         console.log(res,'res')
         this.getStudents();
       })
@@ -50,8 +50,11 @@ constructor(private formBuilder:FormBuilder,
   }
    getStudents(){
     let url="https://localhost:1234/api/Student/GetStudents"
-       this.http.get(url).subscribe(res=>{
+       this.http.get(url).subscribe((res: any)=>{
         console.log(res,'res')
        });
+   }
+   onLogin(){
+    this.router.navigate(['login'])
    }
 }

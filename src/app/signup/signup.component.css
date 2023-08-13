@@ -1,18 +1,122 @@
-.cancelIcon:hover {
-    background-color: rgb(85, 26, 26);
-    cursor: pointer;
-  }
-  .cancelIcon {
-    position: absolute; 
-    right: 15px;
-    font-size: 25px;
-    top: 10px;
-  }
+/* Center the dialog content */
+.mat-dialog-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.container {
+  max-width: 400px;
+  padding: 20px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  background-color: #f5f5f5;
+}
+.mat-dialog-content .col-sm-12 b {
+  font-size: 24px;
+  font-weight: bold;
+  margin-bottom: 10px;
+}
 
-  .mat-mdc-form-field {
-    --mat-mdc-form-field-floating-label-scale: 0.75;
-    display: contents;
-    flex-direction: column;
-    min-width: 0;
-    text-align: left;
-  }
+/* Style the form input fields */
+.col-sm-6 {
+  margin-bottom: 15px;
+}
+.form-control {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+.col-sm-6 button {
+  width: 100%;
+  padding: 10px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 16px;
+  font-weight: bold;
+  transition: background-color 0.3s ease;
+}
+
+/* Primary button style */
+.col-sm-6 button.color-primary {
+  background-color: #007bff;
+  color: #fff;
+}
+.col-sm-6 button.color-accent {
+  background-color: #ff4081;
+  color: #fff;
+}
+
+/* Change button color on hover */
+.col-sm-6 button:hover {
+  background-color: #0056b3;
+}
+/* Style the close icon */
+.cancelIcon {
+  font-size: 24px;
+  cursor: pointer;
+  margin: 10px 0;
+}
+
+/* Style the form header */
+.mat-dialog-content b {
+  font-size: 24px;
+  font-weight: bold;
+  margin-bottom: 10px;
+}
+
+/* Style the form fields */
+mat-form-field {
+  width: 100%;
+  margin-bottom: 15px;
+}
+
+/* Style the form inputs */
+input.mat-input-element {
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
+/* Style the error messages */
+mat-error {
+  display: none;
+  color: red;
+  font-size: 14px;
+  margin-top: 5px;
+}
+
+/* Show error messages when input is invalid and touched */
+mat-error.ng-dirty.ng-invalid {
+  display: block;
+}
+
+/* Style the actions at the end of the dialog */
+.mat-dialog-actions {
+  display: flex;
+  justify-content: flex-end;
+  margin-top: 20px;
+}
+
+/* Style the sign-up button */
+.mat-dialog-actions button {
+  padding: 10px 20px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 16px;
+  font-weight: bold;
+  transition: background-color 0.3s ease;
+}
+
+/* Accent button style */
+.mat-dialog-actions button[color="accent"] {
+  background-color: #ff4081;
+  color: #fff;
+}
+
+/* Change button color on hover */
+.mat-dialog-actions button:hover {
+  background-color: #ff005a;
+}

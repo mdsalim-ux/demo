@@ -1,1 +1,33 @@
-<p>login works!</p>
+<div class="container">
+    <mat-dialog-content class="mat-typography">
+        <div class="col-sm-12">
+        <b>{{'Login'|translate}}</b>
+        </div>
+        <form (ngSubmit)="LoginFormControl.valid" name="LoginFormControl" [formGroup]="LoginFormControl" class="novalidate">
+            <div class="col-sm-6 ">
+            <input type="text"  matInput formControlName="name" class="form-control"
+                    placeholder="{{'Username'|translate}}" required >
+                    <mat-error *ngIf="LoginFormControl.controls['name']['errors']?.['required'] && LoginFormControl.controls['name'].touched">
+                        {{'User_Name_required'|translate}}
+                      </mat-error>                      
+                <mat-error
+                *ngIf="LoginFormControl.controls['name']['errors']?.['pattern']  && LoginFormControl.controls['name'].touched">{{'User_Name_Val'|translate}}
+              </mat-error>
+              </div>
+              <div class="col-sm-6 ">
+                <input  type="number"  class="form-control" matInput formControlName="MobileNumber"  placeholder="{{'Mobile Number'|translate}}"required>
+                <mat-error *ngIf="LoginFormControl.controls['MobileNumber']['errors']?.['required'] && LoginFormControl.controls['MobileNumber'].touched">
+                    {{'Please enter the mobile number'|translate}}
+                </mat-error>  
+                <mat-error
+                 *ngIf="LoginFormControl.controls['MobileNumber']['errors']?.['pattern'] && LoginFormControl.controls['MobileNumber'].touched">{{'Please enter mobile number'|translate}}</mat-error>
+              </div>
+        </form>
+    </mat-dialog-content>
+        <div class="col-sm-6">
+        <button   mat-raised-button class="form-control" color="accent" (click)="onSign()" >{{'Sign Up'|translate}}</button>
+    </div>
+        <div class="col-sm-6">
+            <button   mat-raised-button class="form-control" color="warn" (click)="onLogin()" >{{'Login'|translate}}</button>
+    </div>
+</div>

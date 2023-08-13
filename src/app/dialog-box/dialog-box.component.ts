@@ -38,60 +38,11 @@ export class DialogBoxComponent implements OnInit  {
     }
 
   ngOnInit(): void {
-    this.dropdownchange(event);
-    this.emailFormControl=this.formBuilder.group({
-      email:['',Validators.required],
-      password:['',Validators.required]
-
-    })
-
 
   }
-  showLoader(){
-  this.loader.loading.next(true)
-  }
-  onClick(){
-    this.emailFormControl.valid
-    this.msg=this.translate.getTranslatelang('Spinner')
-    console.log( this.emailFormControl.valid,'Check Status')
-  }
-  onTabChange(event:any){
-    console.log(event,'event')
-    if(event.index==1){
-      this.router.navigate(['/login'])
-    }
-    if(event.index==2){
-      this.router.navigate(['/Sign'])
-    }
-  }
-  dropdownchange(event:any){
-    if(event!=undefined){
-      this._translate.setDefaultLang(event.value)
+  
 
-    }
-  }
-
-  openDialog() {
-    // let input={'title':this.translate.getTranslatelang('Info'),message:[this.translate.getTranslatelang('Inform')]}
-    // this._dialog.OpenAlert(input,'450px')
-    // let input = { 'title': this.translate.getTranslatelang('Info'), message: [this.translate.getTranslatelang('Inform')] }
-    // this._confirm.OpenConfirmAlert(input, '450px').subscribe(result => {
-    //   if (result) {
-    //    this.notification.error(this.translate.getTranslatelang('Inform'),'')
-    //   }
-    //   else {
-    //     return
-    //   }
-    // })
-    const dialogRef = this.dialog.open(SignupComponent,{
-      disableClose:true,
-      width:'450px',
-      autoFocus:false,
-    });
-    dialogRef.afterClosed().subscribe(result => {
-      console.log(`Dialog result: ${result}`);
-    });
-  }
+  
     
  
 }

@@ -36,10 +36,8 @@ constructor(private formBuilder:FormBuilder,
     this.emailFormControl.markAllAsTouched()
     if(this.emailFormControl.valid){
       this._notification.success(this._translate.getTranslatelang('Sign-Up Successfully'),'')
-      console.log(this.emailFormControl.value,'Values')
       let url="https://localhost:1234/api/Student/SavingStudents"
       this.http.post(url,this.emailFormControl.value).subscribe((res: any)=>{
-        console.log(res,'res')
         this.getStudents();
       })
       }
@@ -51,7 +49,6 @@ constructor(private formBuilder:FormBuilder,
    getStudents(){
     let url="https://localhost:1234/api/Student/GetStudents"
        this.http.get(url).subscribe((res: any)=>{
-        console.log(res,'res')
        });
    }
    onLogin(){

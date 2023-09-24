@@ -1,7 +1,8 @@
-import { Component } from '@angular/core';
+import { Component, HostListener } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { DialogBoxComponent } from './dialog-box/dialog-box.component';
 import { HttpClient } from '@angular/common/http';
+import { enviromentDev } from '../environments/environmentsDev.component';
 
 @Component({
   selector: 'app-root',
@@ -10,33 +11,65 @@ import { HttpClient } from '@angular/common/http';
 })
 export class AppComponent {
   title = 'Project';
-  
-constructor(private dialog:MatDialog,private http:HttpClient ){
-  let url = "https://localhost:1234/api/Student/GetStudents";
-  this.http.get(url).subscribe((res: any) => {
-    const sortedData = res.sort((a: { studentId: number; }, b: { studentId: number; }) => {
-      return a.studentId - b.studentId;
-    });
-  
-    console.log(sortedData, 'sorted data');
-  });
+  private idleTimeout:number=enviromentDev.timeout *5;
+  private idleSec:number=0;
 
-  let urls = "https://localhost:1234/api/Student/GetStudents";
-  this.http.get(urls).subscribe((res: any) => {
-    console.log(res, 'res');
-    
+constructor(private dialog:MatDialog,private http:HttpClient ){
   
-  });
             
 }
 
-
-openDialog() {
-  const dialogRef = this.dialog.open(DialogBoxComponent);
-   
-  dialogRef.afterClosed().subscribe((result: any) => {
-    console.log(`Dialog result: ${result}`);
-  });
+ngOninit(){
+  setInterval(()=>{
+    this.checkidleTimer()
+  },1000)
 }
-  
+resetidleTimer(){
+  this.idleSec= 0 ;
+}
+
+checkidleTimer(){
+  if(this.idleSec >=this.idleTimeout){
+
+  }
+  else{
+    this.idleSec +=1
+  }
+}
+  ngDoCheck(){
+    this.checkidleTimer()
+  }
+  @HostListener('document:mousemove')
+  onMouseMove() {
+   this.resetidleTimer()
+  }
+  @HostListener('document:keypress')
+  onKeyPress() {
+    this.resetidleTimer()
+  }
+  @HostListener('document:touchstart')
+  onTouchStart() {
+    this.resetidleTimer()
+  }
+  @HostListener('document:touchmove')
+  onTouchMove() {
+    this.resetidleTimer()
+  }
+  @HostListener('document:click')
+  onClick() {
+    this.resetidleTimer()
+  }
+  @HostListener('document:scroll')
+  onScroll() {
+    this.resetidleTimer()
+  }
+  @HostListener('document:ontouchmove')
+  onDocumentTouchMove() {
+    this.resetidleTimer()
+
+  }
+  @HostListener('window:beforeunload', ['$event'])
+  unloadNotification($event: any) {
+    this.resetidleTimer()
+  }
 }

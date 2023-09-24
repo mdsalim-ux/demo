@@ -1,10 +1,10 @@
 
  <p class="container">
     <mat-toolbar color="warn">
-      <button mat-icon-button class="example-icon" aria-label="Example icon-button with menu icon">
-        <mat-icon>menu</mat-icon>
-      </button>
-      <span>{{'My App'|translate}}</span>
+        <mat-icon class="day-mode" *ngIf="!isChecked" (click)="toggleTheme()"
+        matTooltip="{{'Night Mode'|translate}}">brightness_high</mat-icon>
+    <mat-icon class="night-mode" *ngIf="isChecked" (click)="toggleTheme()"
+        matTooltip="{{'Day Mode'|translate}}">brightness_2</mat-icon>
       <span class="example-spacer"></span>
       <button mat-icon-button class="example-icon favorite-icon" (click)="openDialog()" aria-label="Example icon-button with heart icon">
         <mat-icon >supervisor_account</mat-icon>

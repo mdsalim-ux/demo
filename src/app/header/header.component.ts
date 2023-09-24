@@ -12,6 +12,8 @@ import { ToasterService } from 'src/app/services/toaster/toaster.service';
 import { TransationModule } from 'src/app/services/transation/transation.module';
 import { SignupComponent } from 'src/app/signup/signup.component';
 import * as XLSX from 'xlsx';
+import { SharedDataService } from '../services/shared-data/shared-data.service';
+import { DarkModeService } from '../common/dark-mode/dark-mode.service';
 
 @Component({
   selector: 'app-header',
@@ -39,6 +41,9 @@ export class HeaderComponent {
   msg: any;
   editEnable: boolean=false;
   selectedData: any;
+  prefersDark: boolean=false;
+  isChecked = false;
+
   constructor(private formBuilder:FormBuilder,
     private router:Router,
     private loader:LoaderComponent,
@@ -49,6 +54,8 @@ export class HeaderComponent {
     public notification:ToasterService,
     public _confirm:ConfirmalertModule,
     private loaderService:LoaderService,
+    private sharedData:SharedDataService,
+    private themeService:DarkModeService
     )
     {
       _translate.setDefaultLang('en')
@@ -57,6 +64,9 @@ export class HeaderComponent {
         pagination: true,
         paginationPageSize: 5,
       }
+     this.sharedData.baseDataObs.subscribe(data=>{
+      let ss=data
+     })
     }
 
   ngOnInit(): void {
@@ -68,18 +78,33 @@ export class HeaderComponent {
     })
     this.setColDef();
     this.populateRowData();
+    this.themeService.toggleDarkMode();
+    this.themeService.setAutoMode();
+    this.prefersDark=this.sharedData.checkPrefersDark();
+    if(this.prefersDark){
+      this.isChecked=false;
+    }
+    else{
+      this.isChecked=true;
+    }
   }
 
-
+  toggleTheme() {
+    if (this.isChecked !== true) {
+      this.themeService.toggleDarkMode();
+      this.isChecked = true;
+    } else {
+      this.isChecked = false;
+      this.themeService.toggleDarkMode();
+    }
+  }
 
   onClick(){
     this.emailFormControl.valid
     this.msg=this.translate.getTranslatelang('Spinner')
-    console.log( this.emailFormControl.valid,'Check Status')
   }
 
   onTabChange(event:any){
-    console.log(event,'event')
     if(event.index==1){
       this.router.navigate(['/login'])
     }
@@ -106,7 +131,6 @@ export class HeaderComponent {
     //   autoFocus:false,
     // });
     // dialogRef.afterClosed().subscribe((result: any) => {
-    //   console.log(`Dialog result: ${result}`);
     // });
     this.router.navigate(['/login'])
   }
@@ -154,7 +178,6 @@ export class HeaderComponent {
             }
             this.isUploaded = false;
             
-            console.log('Column Data:', this.columnsData);
             let filterEmpty: any = [];
             const foundItems = this.columnsData.filter((item: { name: string }) =>
               item.name === 'Label' || item.name === 'First Name' || item.name === 'Last Name' 
@@ -182,7 +205,6 @@ export class HeaderComponent {
               this.finalExcelData = this.columnsData
             }
           } else {
-            console.log('No defined cells in the worksheet.');
           }
 
         }
@@ -241,7 +263,6 @@ export class HeaderComponent {
     this.gridApi = params.api;
     this.gridApi.refreshCells(params); 
     this.rowData = this.rowData
-    console.log(this.rowData,'row data')
   }
   populateRowData() {
     this.rowData = [

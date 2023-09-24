@@ -1,11 +1,9 @@
 import { ObserversModule } from '@angular/cdk/observers';
 import { Injectable } from '@angular/core';
-import { ActivatedRouteSnapshot, CanActivate, CanDeactivate, Router, RouterStateSnapshot } from '@angular/router';
+import { ActivatedRouteSnapshot, CanActivate, Router, RouterStateSnapshot } from '@angular/router';
 import { Observable, of, tap } from 'rxjs';
 
-@Injectable({
-  providedIn: 'root'
-})
+
 export class AuthGuard  implements CanActivate {
 
   constructor(private router:Router) { }
